@@ -30,7 +30,7 @@ export const promotions = [
 
 export const vendors = [
   {
-    id: 1,
+    id: "afrocon-1",
     name: "Afrocon",
     image: "https://placehold.co/200x150.png",
     rating: 5,
@@ -46,7 +46,7 @@ export const vendors = [
     ]
   },
   {
-    id: 2,
+    id: "grill-house-2",
     name: "Grill House K...",
     image: "https://placehold.co/200x150.png",
     rating: 5,
@@ -62,7 +62,7 @@ export const vendors = [
     ]
   },
   {
-    id: 3,
+    id: "sidi-sons-3",
     name: "Sidi & Sons",
     image: "https://placehold.co/200x150.png",
     rating: 5,
@@ -78,7 +78,7 @@ export const vendors = [
     ]
   },
   {
-    id: 4,
+    id: "life-pharmacy-4",
     name: "Life Pharmacy",
     image: "https://placehold.co/200x150.png",
     rating: 5,
@@ -94,7 +94,7 @@ export const vendors = [
     ]
   },
   {
-    id: 5,
+    id: "mamas-delight-5",
     name: "Mama's Delight",
     image: "https://placehold.co/200x150.png",
     rating: 4.8,
@@ -110,7 +110,7 @@ export const vendors = [
     ]
   },
   {
-    id: 6,
+    id: "kakas-kitchen-6",
     name: "Kaka's Kitchen",
     image: "https://placehold.co/200x150.png",
     rating: 4.9,
@@ -126,7 +126,7 @@ export const vendors = [
     ]
   },
   {
-    id: 7,
+    id: "wellcare-supermarket-7",
     name: "Wellcare Supermarket",
     image: "https://placehold.co/200x150.png",
     rating: 4.5,
@@ -142,7 +142,7 @@ export const vendors = [
     ]
   },
   {
-    id: 8,
+    id: "healthplus-pharmacy-8",
     name: "HealthPlus Pharmacy",
     image: "https://placehold.co/200x150.png",
     rating: 4.7,
@@ -158,7 +158,7 @@ export const vendors = [
     ]
   },
   {
-    id: 9,
+    id: "sweet-treats-9",
     name: "Sweet Treats",
     image: "https://placehold.co/200x150.png",
     rating: 4.6,
@@ -174,7 +174,7 @@ export const vendors = [
     ]
   },
   {
-    id: 10,
+    id: "freshmart-10",
     name: "FreshMart",
     image: "https://placehold.co/200x150.png",
     rating: 4.8,
@@ -190,7 +190,7 @@ export const vendors = [
     ]
   },
   {
-    id: 11,
+    id: "city-pharmacy-11",
     name: "City Pharmacy",
     image: "https://placehold.co/200x150.png",
     rating: 4.4,
@@ -206,7 +206,7 @@ export const vendors = [
     ]
   },
   {
-    id: 12,
+    id: "global-bites-12",
     name: "Global Bites",
     image: "https://placehold.co/200x150.png",
     rating: 4.7,
@@ -222,7 +222,7 @@ export const vendors = [
     ]
   },
   {
-    id: 13,
+    id: "corner-shop-13",
     name: "The Corner Shop",
     image: "https://placehold.co/200x150.png",
     rating: 4.9,
@@ -238,7 +238,7 @@ export const vendors = [
     ]
   },
   {
-    id: 14,
+    id: "dan-wake-spot-14",
     name: "Dan Wake Spot",
     image: "https://placehold.co/200x150.png",
     rating: 4.9,

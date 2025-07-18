@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Star } from "lucide-react";
 
 type VendorCardProps = {
-  id: number;
+  id: string; // Firestore IDs are strings
   name: string;
   rating: number;
   deliveryTime: string;
@@ -64,5 +64,3 @@ export function VendorCard({
     </Link>
   );
 }
-
-    

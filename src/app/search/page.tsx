@@ -1,12 +1,18 @@
 'use client';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { SearchHeader } from "@/components/qruz/search-header";
-import { topCategories, recentSearches, vendors as allVendors } from "@/lib/data";
-import { ChevronRight } from "lucide-react";
+import { topCategories, recentSearches } from "@/lib/data";
+import { ChevronRight, Loader2 } from "lucide-react";
 import { VendorCard } from "@/components/qruz/vendor-card";
+import { db } from "@/lib/firebase";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { vendors as mockVendors } from "@/lib/data"; // Keep for type reference
+
+type Vendor = typeof mockVendors[0] & { id: string };
+
 
 const CategoryChip = ({ label, active, onClick }: { label: string, active?: boolean, onClick: () => void }) => (
   <Button 
@@ -37,22 +43,38 @@ const CategoryIcon = ({ icon, label, onClick, active }: { icon: React.ReactNode,
     </div>
 );
 
-const mainCategories = ["All", "Restaurants", "Supermarkets", "Pharmacy"];
+const mainCategories = ["All", "Food", "Supermarkets", "Pharmacy"];
 
 export default function SearchPage() {
+  const [allVendors, setAllVendors] = useState<Vendor[]>([]);
+  const [loading, setLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState("All");
 
-  const filteredVendors = useMemo(() => {
-    if (activeCategory === "All") {
-      return allVendors;
-    }
-    if (activeCategory === "Restaurants") {
-       return allVendors.filter(vendor => vendor.tags.includes("Food"));
-    }
-    return allVendors.filter(vendor => 
-        vendor.tags.some(tag => tag.toLowerCase().includes(activeCategory.toLowerCase()))
-    );
+  useEffect(() => {
+    const fetchVendors = async () => {
+        setLoading(true);
+        try {
+            const vendorsCollection = collection(db, "vendors");
+            let q = query(vendorsCollection);
+
+            if (activeCategory !== "All") {
+                // Tags are stored as an array, so match with array-contains.
+                q = query(vendorsCollection, where("tags", "array-contains", activeCategory));
+            }
+            
+            const querySnapshot = await getDocs(q);
+            const vendorsData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Vendor));
+            setAllVendors(vendorsData);
+
+        } catch (error) {
+            console.error("Error fetching vendors:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+    fetchVendors();
   }, [activeCategory]);
+
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -63,7 +85,7 @@ export default function SearchPage() {
                 {mainCategories.map(category => (
                    <CategoryChip 
                         key={category}
-                        label={category}
+                        label={category === 'Food' ? 'Restaurants' : category}
                         active={activeCategory === category}
                         onClick={() => setActiveCategory(category)}
                     />
@@ -113,9 +135,13 @@ export default function SearchPage() {
             <h2 className="font-headline text-xl font-bold mb-4">
                 {activeCategory === "All" ? "All Vendors" : activeCategory}
             </h2>
-            {filteredVendors.length > 0 ? (
+            {loading ? (
+                <div className="flex justify-center items-center py-10">
+                    <Loader2 className="w-8 h-8 animate-spin text-primary" />
+                </div>
+            ) : allVendors.length > 0 ? (
                 <div className="grid grid-cols-2 gap-4">
-                {filteredVendors.map((vendor) => (
+                {allVendors.map((vendor) => (
                     <VendorCard key={vendor.id} {...vendor} />
                 ))}
                 </div>

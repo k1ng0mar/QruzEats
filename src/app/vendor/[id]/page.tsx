@@ -1,8 +1,7 @@
 
 'use client';
 
-import { useState } from "react";
-import { vendors } from "@/lib/data";
+import { use, useState, useEffect } from "react";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { 
@@ -16,13 +15,19 @@ import {
     Bookmark,
     ShoppingCart,
     Plus,
-    LayoutGrid
+    LayoutGrid,
+    Loader2
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
+import { db } from "@/lib/firebase";
+import { doc, getDoc } from "firebase/firestore";
+import { vendors as mockVendors } from "@/lib/data"; // Keep for type reference
+
+type Vendor = typeof mockVendors[0];
 
 const ActionButton = ({ children, className }: { children: React.ReactNode, className?: string }) => (
     <Button variant="ghost" size="icon" className={cn("bg-white/80 hover:bg-white text-foreground rounded-full shadow-md", className)}>
@@ -43,8 +48,42 @@ const CategoryTab = ({ label, active, onClick, icon }: { label: string, active: 
 
 export default function VendorPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
-  const vendor = vendors.find((v) => v.id === parseInt(params.id, 10));
+  const [vendor, setVendor] = useState<Vendor | null>(null);
+  const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("Popular");
+
+  useEffect(() => {
+    if (!id) return;
+
+    const fetchVendor = async () => {
+        try {
+            const docRef = doc(db, "vendors", id);
+            const docSnap = await getDoc(docRef);
+
+            if (docSnap.exists()) {
+                setVendor({ id: docSnap.id, ...docSnap.data() } as Vendor);
+            } else {
+                notFound();
+            }
+        } catch (error) {
+            console.error("Error fetching vendor:", error);
+            // Optionally, handle error state
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    fetchVendor();
+  }, [id]);
+
+
+  if (loading) {
+    return (
+        <div className="flex justify-center items-center min-h-screen">
+            <Loader2 className="w-12 h-12 animate-spin text-primary" />
+        </div>
+    )
+  }
 
   if (!vendor) {
     notFound();
@@ -55,16 +94,12 @@ export default function VendorPage({ params }: { params: Promise<{ id: string }>
 
   const popularProducts = vendor.products?.filter(p => p.tags?.includes("popular")) || [];
   
-  const allProducts = activeTab === 'All' ? vendor.products : [];
-
-  const filteredProducts = activeTab !== "Popular" && activeTab !== "All" 
+  const filteredProducts = activeTab !== "Popular"
     ? vendor.products?.filter(p => p.category === activeTab)
     : [];
     
   const productsToDisplay = activeTab === "Popular"
     ? popularProducts
-    : activeTab === "All"
-    ? vendor.products
     : filteredProducts;
 
 
@@ -125,7 +160,7 @@ export default function VendorPage({ params }: { params: Promise<{ id: string }>
                 <Badge variant="outline" className="p-1 px-3">{vendor.distance}</Badge>
             </div>
             <div className="flex items-center gap-1 mt-2 text-muted-foreground text-sm">
-                <span>Minimum Order ₦{vendor.price.toLocaleString()}</span>
+                <span>Minimum Order ₦{(vendor.price as number).toLocaleString()}</span>
                 <Info className="w-4 h-4"/>
             </div>
         </section>
@@ -144,7 +179,7 @@ export default function VendorPage({ params }: { params: Promise<{ id: string }>
             </div>
         </section>
         
-        {activeTab === 'All' && popularProducts.length > 0 ? (
+        {activeTab !== 'Popular' && activeTab !== 'All' ? null : (
              <section>
                 <h2 className="text-2xl font-headline font-bold mb-4">Popular</h2>
                 <div className="flex space-x-4 overflow-x-auto pb-4 -mx-4 px-4">
@@ -161,8 +196,7 @@ export default function VendorPage({ params }: { params: Promise<{ id: string }>
                     ))}
                 </div>
             </section>
-        ) : null}
-
+        )}
 
         <section className="space-y-4">
             <h2 className="text-2xl font-headline font-bold">{activeTab}</h2>
@@ -194,5 +228,3 @@ export default function VendorPage({ params }: { params: Promise<{ id: string }>
     </div>
   );
 }
-
-    

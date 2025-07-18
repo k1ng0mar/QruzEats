@@ -7,7 +7,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import { promotions, vendors } from "@/lib/data";
+import { promotions, vendors as mockVendors } from "@/lib/data";
 import { VendorCard } from "@/components/qruz/vendor-card";
 import { UtensilsCrossed, ShoppingCart } from "lucide-react";
 import { CategorySelectionCard } from "@/components/qruz/category-selection-card";
@@ -15,6 +15,8 @@ import { CuisineCarousel } from "@/components/qruz/cuisine-carousel";
 
 
 export default function Home() {
+  // We'll use the mock data for now on the homepage and switch to firebase later if needed
+  const vendors = mockVendors;
   const popularStores = vendors.filter(v => v.rating >= 4.9).slice(0, 6);
   const bestSellers = vendors.slice(0, 6);
 
@@ -96,5 +98,3 @@ export default function Home() {
     </div>
   );
 }
-
-    

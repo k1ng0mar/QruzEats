@@ -25,34 +25,6 @@ export const recentSearches = [
     { name: "Wellcare Supermarket", context: "No. 10 Gashash Road, Kano", image: "https://placehold.co/100x100.png", type: "store" },
 ];
 
-
-export const categories = [
-  {
-    name: "Food",
-    description: "Order from your favorite restaurants",
-    image: "https://placehold.co/600x400.png",
-    href: "#",
-  },
-  {
-    name: "Stores",
-    description: "Groceries and everything else",
-    image: "https://placehold.co/600x400.png",
-    href: "#",
-  },
-  {
-    name: "Nigerian",
-    description: "Local Nigerian dishes",
-    image: "https://placehold.co/600x400.png",
-    href: "#",
-  },
-  {
-    name: "Grills",
-    description: "Barbecue and grilled food",
-    image: "https://placehold.co/600x400.png",
-    href: "#",
-  }
-];
-
 export const promotions = [
   { image: "https://placehold.co/600x300.png", alt: "Promotion 1" },
   { image: "https://placehold.co/600x300.png", alt: "Promotion 2" },
@@ -60,58 +32,218 @@ export const promotions = [
 ];
 
 export const popularStores = [
-    { name: "Sidi & Sons", logo: "https://placehold.co/140x96.png", distance: "900 m", rating: 5 },
-    { name: "Smile Store", logo: "https://placehold.co/140x96.png", distance: "1 km", rating: 5 },
-    { name: "GroceryHub", logo: "https://placehold.co/140x96.png", distance: "1.2 km", rating: 4.5 },
-    { name: "QuickMart", logo: "https://placehold.co/140x96.png", distance: "1.5 km", rating: 4.3 },
+    { name: "Sidi & Sons", logo: "https://placehold.co/140x96.png", distance: "900 m", rating: 5, id: 'sidi-sons-3' },
+    { name: "Smile Store", logo: "https://placehold.co/140x96.png", distance: "1 km", rating: 5, id: 'smile-store-15' },
+    { name: "GroceryHub", logo: "https://placehold.co/140x96.png", distance: "1.2 km", rating: 4.5, id: 'groceryhub-16' },
+    { name: "QuickMart", logo: "https://placehold.co/140x96.png", distance: "1.5 km", rating: 4.3, id: 'quickmart-17' },
 ];
 
 
 export const vendors = [
   {
+    id: "afrocon-1",
     name: "Afrocon",
     image: "https://placehold.co/200x150.png",
     rating: 5,
     deliveryTime: "30-35 min",
-    logo: "https://placehold.co/40x40.png",
+    logo: "https://placehold.co/80x80.png",
     price: 7000,
     distance: "200 m",
     priceRange: "$$$",
-    tags: ["Food", "Nigerian"]
+    tags: ["Food", "Rice Dishes", "Nigerian"]
   },
   {
+    id: "grill-house-2",
     name: "Grill House K...",
     image: "https://placehold.co/200x150.png",
     rating: 5,
     deliveryTime: "10-25 min",
-    logo: "https://placehold.co/40x40.png",
+    logo: "https://placehold.co/80x80.png",
     price: 7000,
     distance: "800 m",
     priceRange: "$$$",
     tags: ["Food", "Grills"]
   },
   {
+    id: "sidi-sons-3",
     name: "Sidi & Sons",
     image: "https://placehold.co/200x150.png",
     rating: 5,
     deliveryTime: "60+ min",
-    logo: "https://placehold.co/40x40.png",
+    logo: "https://placehold.co/80x80.png",
     price: 500,
     distance: "700 m",
     priceRange: "$",
-    tags: ["Stores", "Groceries"]
+    tags: ["Supermarkets", "Groceries"]
   },
   {
+    id: "life-pharmacy-4",
     name: "Life Pharmacy",
     image: "https://placehold.co/200x150.png",
     rating: 5,
     deliveryTime: "30-35 min",
-    logo: "https://placehold.co/40x40.png",
+    logo: "https://placehold.co/80x80.png",
     price: 2000,
     distance: "900 m",
     priceRange: "$$",
-    tags: ["Stores", "Pharmacy"]
+    tags: ["Pharmacy"]
   },
+  {
+    id: "mamas-delight-5",
+    name: "Mama's Delight",
+    image: "https://placehold.co/200x150.png",
+    rating: 4.8,
+    deliveryTime: "25-30 min",
+    logo: "https://placehold.co/80x80.png",
+    price: 2500,
+    distance: "1.2 km",
+    priceRange: "$$",
+    tags: ["Food", "Swallow", "Nigerian"]
+  },
+  {
+    id: "kakas-kitchen-6",
+    name: "Kaka's Kitchen",
+    image: "https://placehold.co/200x150.png",
+    rating: 4.9,
+    deliveryTime: "20-25 min",
+    logo: "https://placehold.co/80x80.png",
+    price: 3000,
+    distance: "500 m",
+    priceRange: "$$",
+    tags: ["Food", "Rice Dishes", "Grills"]
+  },
+  {
+    id: "wellcare-supermarket-7",
+    name: "Wellcare Supermarket",
+    image: "https://placehold.co/200x150.png",
+    rating: 4.5,
+    deliveryTime: "45-60 min",
+    logo: "https://placehold.co/80x80.png",
+    price: 1000,
+    distance: "2.5 km",
+    priceRange: "$",
+    tags: ["Supermarkets", "Groceries"]
+  },
+  {
+    id: "healthplus-pharmacy-8",
+    name: "HealthPlus Pharmacy",
+    image: "https://placehold.co/200x150.png",
+    rating: 4.7,
+    deliveryTime: "15-20 min",
+    logo: "https://placehold.co/80x80.png",
+    price: 1500,
+    distance: "300 m",
+    priceRange: "$$",
+    tags: ["Pharmacy"]
+  },
+  {
+    id: "sweet-treats-9",
+    name: "Sweet Treats",
+    image: "https://placehold.co/200x150.png",
+    rating: 4.6,
+    deliveryTime: "30-40 min",
+    logo: "https://placehold.co/80x80.png",
+    price: 1500,
+    distance: "1.8 km",
+    priceRange: "$",
+    tags: ["Food", "Desserts", "Snacks"]
+  },
+  {
+    id: "freshmart-10",
+    name: "FreshMart",
+    image: "https://placehold.co/200x150.png",
+    rating: 4.8,
+    deliveryTime: "35-45 min",
+    logo: "https://placehold.co/80x80.png",
+    price: 2000,
+    distance: "2.1 km",
+    priceRange: "$$",
+    tags: ["Supermarkets", "Groceries"]
+  },
+  {
+    id: "city-pharmacy-11",
+    name: "City Pharmacy",
+    image: "https://placehold.co/200x150.png",
+    rating: 4.4,
+    deliveryTime: "20-30 min",
+    logo: "https://placehold.co/80x80.png",
+    price: 800,
+    distance: "1.1 km",
+    priceRange: "$",
+    tags: ["Pharmacy"]
+  },
+  {
+    id: "global-bites-12",
+    name: "Global Bites",
+    image: "https://placehold.co/200x150.png",
+    rating: 4.7,
+    deliveryTime: "40-50 min",
+    logo: "https://placehold.co/80x80.png",
+    price: 5000,
+    distance: "3.5 km",
+    priceRange: "$$$",
+    tags: ["Food", "International"]
+  },
+  {
+    id: "corner-shop-13",
+    name: "The Corner Shop",
+    image: "https://placehold.co/200x150.png",
+    rating: 4.9,
+    deliveryTime: "5-10 min",
+    logo: "https://placehold.co/80x80.png",
+    price: 300,
+    distance: "100 m",
+    priceRange: "$",
+    tags: ["Supermarkets", "Snacks", "Drinks"]
+  },
+  {
+    id: "dan-wake-spot-14",
+    name: "Dan Wake Spot",
+    image: "https://placehold.co/200x150.png",
+    rating: 4.9,
+    deliveryTime: "15-20 min",
+    logo: "https://placehold.co/80x80.png",
+    price: 1500,
+    distance: "600m",
+    priceRange: "$",
+    tags: ["Food", "Nigerian", "Swallow"]
+  },
+  {
+    id: "smile-store-15",
+    name: "Smile Store",
+    image: "https://placehold.co/200x150.png",
+    rating: 5,
+    deliveryTime: "10-20 min",
+    logo: "https://placehold.co/80x80.png",
+    price: 1000,
+    distance: "1 km",
+    priceRange: "$",
+    tags: ["Supermarkets", "Groceries"]
+  },
+  {
+    id: "groceryhub-16",
+    name: "GroceryHub",
+    image: "https://placehold.co/200x150.png",
+    rating: 4.5,
+    deliveryTime: "30-40 min",
+    logo: "https://placehold.co/80x80.png",
+    price: 1200,
+    distance: "1.2 km",
+    priceRange: "$",
+    tags: ["Supermarkets", "Groceries"]
+  },
+  {
+    id: "quickmart-17",
+    name: "QuickMart",
+    image: "https://placehold.co/200x150.png",
+    rating: 4.3,
+    deliveryTime: "15-25 min",
+    logo: "https://placehold.co/80x80.png",
+    price: 900,
+    distance: "1.5 km",
+    priceRange: "$",
+    tags: ["Supermarkets", "Groceries"]
+  }
 ];
 
 
