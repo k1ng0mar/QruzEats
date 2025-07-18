@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Search, ShoppingCart, User, Utensils } from "lucide-react";
+import { Home, Search, ShoppingCart, User, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
@@ -34,11 +34,14 @@ export function BottomNav() {
 
         <div className="relative">
           <Link
-            href="/food"
-            className="flex items-center justify-center w-16 h-16 bg-primary rounded-full shadow-lg"
-            aria-label="Order Food"
+            href="/reels"
+            className={cn(
+              "flex items-center justify-center w-16 h-16 bg-primary rounded-full shadow-lg transition-transform duration-200",
+              pathname === "/reels" ? "scale-110" : ""
+            )}
+            aria-label="Watch Reels"
           >
-            <Utensils className="h-8 w-8 text-primary-foreground" />
+            <Play className="h-8 w-8 text-primary-foreground" />
           </Link>
         </div>
 

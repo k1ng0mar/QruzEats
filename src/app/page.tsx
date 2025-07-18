@@ -39,12 +39,14 @@ export default function Home() {
             icon={<UtensilsCrossed className="w-6 h-6 text-primary" />}
             title="Food"
             subtitle="Hungry? Order Now!!!"
+            className="h-full"
         />
         <CategorySelectionCard 
             href="/shop"
             icon={<ShoppingCart className="w-6 h-6 text-primary" />}
             title="Shop"
             subtitle="Groceries at your doorstep"
+            className="h-full"
         />
       </section>
 
@@ -57,11 +59,11 @@ export default function Home() {
             align: "start",
             loop: true,
           }}
-          className="w-full -ml-4"
+          className="w-full"
         >
-          <CarouselContent>
+          <CarouselContent className="-ml-4">
             {promotions.map((promo, index) => (
-              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 basis-5/6">
+              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 basis-5/6 pl-4">
                  <Card className="overflow-hidden rounded-xl">
                     <CardContent className="p-0">
                       <Image

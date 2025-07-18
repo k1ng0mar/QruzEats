@@ -12,13 +12,15 @@ interface CategorySelectionCardProps {
 
 export function CategorySelectionCard({ href, icon, title, subtitle, className }: CategorySelectionCardProps) {
   return (
-    <Link href={href} className="block group">
-      <Card className={cn("transition-all duration-300 ease-in-out group-hover:shadow-lg", className)}>
-        <CardContent className="p-4 flex flex-col items-start gap-2">
-          <div className="bg-muted p-3 rounded-lg">
-            {icon}
+    <Link href={href} className={cn("block group h-full", className)}>
+      <Card className="transition-all duration-300 ease-in-out group-hover:shadow-lg h-full">
+        <CardContent className="p-4 flex flex-col items-start justify-between h-full gap-2">
+          <div>
+            <div className="bg-muted p-3 rounded-lg inline-block mb-2">
+              {icon}
+            </div>
+            <h3 className="font-headline font-bold text-lg">{title}</h3>
           </div>
-          <h3 className="font-headline font-bold text-lg">{title}</h3>
           <p className="text-muted-foreground text-sm">{subtitle}</p>
         </CardContent>
       </Card>

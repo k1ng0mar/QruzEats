@@ -44,7 +44,7 @@ export function AddressModal({
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent side="bottom" className="rounded-t-lg">
+      <SheetContent side="bottom" className="rounded-t-lg h-[90vh] overflow-y-auto">
         <SheetHeader className="text-left">
           <SheetTitle className="font-headline">Select Address</SheetTitle>
           <SheetDescription>
