@@ -10,6 +10,7 @@ import { promotions, vendors, popularStores } from "@/lib/data";
 import { VendorCard } from "@/components/qruz/vendor-card";
 import { Star, UtensilsCrossed, ShoppingCart } from "lucide-react";
 import { CategorySelectionCard } from "@/components/qruz/category-selection-card";
+import { CuisineCarousel } from "@/components/qruz/cuisine-carousel";
 
 const StoreCard = ({ name, logo, rating, distance }: { name: string, logo: string, rating: number, distance: string }) => (
     <Link href="#" className="block flex-shrink-0 w-[140px]">
@@ -49,6 +50,8 @@ export default function Home() {
             className="h-full"
         />
       </section>
+
+      <CuisineCarousel />
 
       <section>
         <h2 className="font-headline text-xl font-bold mb-3">

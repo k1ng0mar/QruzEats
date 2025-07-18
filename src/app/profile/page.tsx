@@ -36,7 +36,7 @@ export default function ProfilePage() {
           <div className="flex flex-col items-center mb-8">
             <Avatar className="w-24 h-24 mb-4">
               <AvatarImage src="https://placehold.co/100x100.png" alt="User profile" />
-              <AvatarFallback>QE</AvatarFallback>
+              <AvatarFallback>AB</AvatarFallback>
             </Avatar>
             <h1 className="text-2xl font-headline font-bold">Aisha Bello</h1>
             <p className="text-muted-foreground">aisha.bello@example.com</p>
