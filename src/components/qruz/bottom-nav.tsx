@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Search, ShoppingCart, User, Play } from "lucide-react";
+import { Home, Search, ShoppingCart, User, Utensils } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
@@ -23,22 +23,22 @@ export function BottomNav() {
             key={label}
             href={href}
             className={cn(
-              "flex flex-col items-center justify-center text-muted-foreground transition-colors hover:text-primary",
-              pathname === href ? "text-primary" : ""
+              "flex flex-col items-center justify-center text-muted-foreground transition-colors hover:text-primary w-16",
+              pathname === href ? "text-primary font-bold" : ""
             )}
           >
             <Icon className="h-6 w-6 mb-1" />
-            <span className="text-xs font-medium">{label}</span>
+            <span className="text-xs">{label}</span>
           </Link>
         ))}
 
         <div className="relative">
           <Link
-            href="/"
-            className="absolute -top-9 left-1/2 -translate-x-1/2 flex items-center justify-center w-16 h-16 bg-primary rounded-full shadow-lg border-4 border-background"
-            aria-label="Start Order"
+            href="/food"
+            className="flex items-center justify-center w-16 h-16 bg-primary rounded-full shadow-lg"
+            aria-label="Order Food"
           >
-            <Play className="h-8 w-8 text-primary-foreground fill-primary-foreground" />
+            <Utensils className="h-8 w-8 text-primary-foreground" />
           </Link>
         </div>
 
@@ -47,12 +47,12 @@ export function BottomNav() {
             key={label}
             href={href}
             className={cn(
-              "flex flex-col items-center justify-center text-muted-foreground transition-colors hover:text-primary",
-              pathname === href ? "text-primary" : ""
+              "flex flex-col items-center justify-center text-muted-foreground transition-colors hover:text-primary w-16",
+              pathname === href ? "text-primary font-bold" : ""
             )}
           >
             <Icon className="h-6 w-6 mb-1" />
-            <span className="text-xs font-medium">{label}</span>
+            <span className="text-xs">{label}</span>
           </Link>
         ))}
       </div>

@@ -1,4 +1,3 @@
-import { Header } from "@/components/qruz/header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -27,7 +26,6 @@ export default function CartPage() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
       <main className="flex-1 p-4 md:p-8 pb-24">
         <h1 className="text-3xl font-headline font-bold mb-6">Your Cart</h1>
         

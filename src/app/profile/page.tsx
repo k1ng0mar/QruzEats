@@ -12,7 +12,6 @@ import {
   LogOut,
   ChevronRight,
 } from "lucide-react";
-import { Header } from "@/components/qruz/header";
 import { Card } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
@@ -32,7 +31,6 @@ const profileLinks = [
 export default function ProfilePage() {
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
       <main className="flex-1 p-4 md:p-8 pb-24">
         <div className="max-w-2xl mx-auto">
           <div className="flex flex-col items-center mb-8">

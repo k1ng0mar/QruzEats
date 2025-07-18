@@ -1,3 +1,14 @@
+export const topCategories = [
+    { name: "Beverages", image: "https://placehold.co/100x100.png" },
+    { name: "Snack", image: "https://placehold.co/100x100.png" },
+    { name: "Local", image: "https://placehold.co/100x100.png" },
+    { name: "Dessert", image: "https://placehold.co/100x100.png" },
+    { name: "Fast Food", image: "https://placehold.co/100x100.png" },
+    { name: "Chinese", image: "https://placehold.co/100x100.png" },
+    { name: "Burgers", image: "https://placehold.co/100x100.png" },
+    { name: "Chicken", image: "https://placehold.co/100x100.png" },
+];
+
 export const categories = [
   {
     name: "Food",
@@ -26,83 +37,62 @@ export const categories = [
 ];
 
 export const promotions = [
-  { image: "https://placehold.co/600x400.png", alt: "Promotion 1" },
-  { image: "https://placehold.co/600x400.png", alt: "Promotion 2" },
-  { image: "https://placehold.co/600x400.png", alt: "Promotion 3" },
-  { image: "https://placehold.co/600x400.png", alt: "Promotion 4" },
+  { image: "https://placehold.co/600x300.png", alt: "Promotion 1" },
+  { image: "https://placehold.co/600x300.png", alt: "Promotion 2" },
+  { image: "https://placehold.co/600x300.png", alt: "Promotion 3" },
 ];
+
+export const popularStores = [
+    { name: "Sidi & Sons", logo: "https://placehold.co/280x192.png", distance: "900 m", rating: 5 },
+    { name: "Smile Store", logo: "https://placehold.co/280x192.png", distance: "1 km", rating: 5 },
+    { name: "GroceryHub", logo: "https://placehold.co/280x192.png", distance: "1.2 km", rating: 4.5 },
+    { name: "QuickMart", logo: "https://placehold.co/280x192.png", distance: "1.5 km", rating: 4.3 },
+];
+
 
 export const vendors = [
   {
-    name: "Mama's Delight",
-    cuisine: "Nigerian, Hausa",
-    rating: 4.8,
-    deliveryTime: "25-35 min",
-    logo: "https://placehold.co/100x100.png",
-    priceRange: "$$",
+    name: "Afrocon",
+    image: "https://placehold.co/400x400.png",
+    rating: 5,
+    deliveryTime: "30-35 min",
+    logo: "https://placehold.co/40x40.png",
+    price: 7000,
+    distance: "200 m",
+    priceRange: "$$$",
     tags: ["Food", "Nigerian"]
   },
   {
-    name: "Kaka's Kitchen",
-    cuisine: "Suya, Grills",
-    rating: 4.9,
-    deliveryTime: "30-40 min",
-    logo: "https://placehold.co/100x100.png",
+    name: "Grill House K...",
+    image: "https://placehold.co/400x400.png",
+    rating: 5,
+    deliveryTime: "10-25 min",
+    logo: "https://placehold.co/40x40.png",
+    price: 7000,
+    distance: "800 m",
     priceRange: "$$$",
     tags: ["Food", "Grills"]
   },
   {
-    name: "Danwake Central",
-    cuisine: "Northern Specials",
-    rating: 4.7,
-    deliveryTime: "20-30 min",
-    logo: "https://placehold.co/100x100.png",
+    name: "Sidi & Sons",
+    image: "https://placehold.co/400x400.png",
+    rating: 5,
+    deliveryTime: "60+ min",
+    logo: "https://placehold.co/40x40.png",
+    price: 500,
+    distance: "700 m",
     priceRange: "$",
-    tags: ["Food", "Nigerian"]
+    tags: ["Stores", "Groceries"]
   },
   {
-    name: "Fura Bliss",
-    cuisine: "Desserts, Beverages",
-    rating: 4.6,
-    deliveryTime: "15-25 min",
-    logo: "https://placehold.co/100x100.png",
-    priceRange: "$",
-    tags: ["Food", "Desserts"]
-  },
-  {
-    name: "Arewa Grillz",
-    cuisine: "Barbecue, Shawarma",
-    rating: 4.8,
-    deliveryTime: "35-45 min",
-    logo: "https://placehold.co/100x100.png",
-    priceRange: "$$$",
-    tags: ["Food", "Grills"]
-  },
-  {
-    name: "The Masa Spot",
-    cuisine: "Snacks, Breakfast",
-    rating: 4.9,
-    deliveryTime: "25-35 min",
-    logo: "https://placehold.co/100x100.png",
+    name: "Life Pharmacy",
+    image: "https://placehold.co/400x400.png",
+    rating: 5,
+    deliveryTime: "30-35 min",
+    logo: "https://placehold.co/40x40.png",
+    price: 2000,
+    distance: "900 m",
     priceRange: "$$",
-    tags: ["Food", "Snacks"]
-  },
-    {
-    name: "Tuwo Palace",
-    cuisine: "Swallow, Soups",
-    rating: 4.5,
-    deliveryTime: "40-50 min",
-    logo: "https://placehold.co/100x100.png",
-    priceRange: "$$",
-    tags: ["Food", "Nigerian"]
-  },
-  {
-    name: "Yaji Spice",
-    cuisine: "Spicy, Local",
-    rating: 4.7,
-    deliveryTime: "30-40 min",
-    logo: "https://placehold.co/100x100.png",
-    priceRange: "$$",
-    tags: ["Food", "Nigerian"]
+    tags: ["Stores", "Pharmacy"]
   },
 ];
