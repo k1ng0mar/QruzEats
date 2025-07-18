@@ -16,8 +16,8 @@ export function BottomNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 h-20 bg-card border-t shadow-t-lg md:hidden">
-      <div className="flex items-center justify-around h-full">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 h-20 bg-card border-t shadow-t-lg">
+      <div className="flex items-center justify-around h-full max-w-md mx-auto">
         {navItems.slice(0, 2).map(({ href, label, icon: Icon }) => (
           <Link
             key={label}

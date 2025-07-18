@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Star } from "lucide-react";
 
 type VendorCardProps = {
+  id: string;
   name: string;
   rating: number;
   deliveryTime: string;
@@ -15,6 +16,7 @@ type VendorCardProps = {
 };
 
 export function VendorCard({
+  id,
   name,
   rating,
   deliveryTime,
@@ -24,7 +26,7 @@ export function VendorCard({
   image
 }: VendorCardProps) {
   return (
-    <Link href="#" className="group">
+    <Link href={`/vendor/${id}`} className="group">
       <Card className="overflow-hidden h-full flex flex-col transition-all duration-300 ease-in-out group-hover:shadow-xl border-none">
         <div className="relative">
             <Image

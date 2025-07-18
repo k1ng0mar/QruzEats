@@ -21,33 +21,6 @@ export const recentSearches = [
 ];
 
 
-export const categories = [
-  {
-    name: "Food",
-    description: "Order from your favorite restaurants",
-    image: "https://placehold.co/600x400.png",
-    href: "#",
-  },
-  {
-    name: "Stores",
-    description: "Groceries and everything else",
-    image: "https://placehold.co/600x400.png",
-    href: "#",
-  },
-  {
-    name: "Nigerian",
-    description: "Local Nigerian dishes",
-    image: "https://placehold.co/600x400.png",
-    href: "#",
-  },
-  {
-    name: "Grills",
-    description: "Barbecue and grilled food",
-    image: "https://placehold.co/600x400.png",
-    href: "#",
-  }
-];
-
 export const promotions = [
   { image: "https://placehold.co/600x300.png", alt: "Promotion 1" },
   { image: "https://placehold.co/600x300.png", alt: "Promotion 2" },
@@ -55,15 +28,15 @@ export const promotions = [
 ];
 
 export const popularStores = [
-    { name: "Sidi & Sons", logo: "https://placehold.co/140x96.png", distance: "900 m", rating: 5 },
-    { name: "Smile Store", logo: "https://placehold.co/140x96.png", distance: "1 km", rating: 5 },
-    { name: "GroceryHub", logo: "https://placehold.co/140x96.png", distance: "1.2 km", rating: 4.5 },
-    { name: "QuickMart", logo: "https://placehold.co/140x96.png", distance: "1.5 km", rating: 4.3 },
+    { id: "sidi-and-sons", name: "Sidi & Sons", logo: "https://placehold.co/140x96.png", distance: "900 m", rating: 5 },
+    { id: "smile-store", name: "Smile Store", logo: "https://placehold.co/140x96.png", distance: "1 km", rating: 5 },
+    { id: "groceryhub", name: "GroceryHub", logo: "https://placehold.co/140x96.png", distance: "1.2 km", rating: 4.5 },
+    { id: "quickmart", name: "QuickMart", logo: "https://placehold.co/140x96.png", distance: "1.5 km", rating: 4.3 },
 ];
-
 
 export const vendors = [
   {
+    id: "afrocon",
     name: "Afrocon",
     image: "https://placehold.co/200x150.png",
     rating: 5,
@@ -72,9 +45,14 @@ export const vendors = [
     price: 7000,
     distance: "200 m",
     priceRange: "$$$",
-    tags: ["Food", "Nigerian"]
+    tags: ["Food", "Rice Dishes", "Nigerian"],
+    products: [
+      { id: 'jollof-chicken', name: 'Jollof Rice & Chicken', price: 3500, image: 'https://placehold.co/100x100.png' },
+      { id: 'fried-plantain', name: 'Fried Plantain (Dodo)', price: 1500, image: 'https://placehold.co/100x100.png' },
+    ]
   },
   {
+    id: "grill-house",
     name: "Grill House K...",
     image: "https://placehold.co/200x150.png",
     rating: 5,
@@ -83,9 +61,14 @@ export const vendors = [
     price: 7000,
     distance: "800 m",
     priceRange: "$$$",
-    tags: ["Food", "Grills"]
+    tags: ["Food", "Grills"],
+    products: [
+        { id: 'bbq-burger', name: 'BBQ Chicken Burger', price: 4500, image: 'https://placehold.co/100x100.png' },
+        { id: 'suya-platter', name: 'Full Chicken Suya', price: 4000, image: 'https://placehold.co/100x100.png' },
+    ]
   },
   {
+    id: "sidi-and-sons",
     name: "Sidi & Sons",
     image: "https://placehold.co/200x150.png",
     rating: 5,
@@ -94,9 +77,14 @@ export const vendors = [
     price: 500,
     distance: "700 m",
     priceRange: "$",
-    tags: ["Stores", "Groceries"]
+    tags: ["Supermarkets", "Groceries"],
+    products: [
+        { id: 'indomie', name: 'Indomie Noodles Carton', price: 8000, image: 'https://placehold.co/100x100.png' },
+        { id: 'milk', name: 'Peak Milk Sachet', price: 500, image: 'https://placehold.co/100x100.png' },
+    ]
   },
   {
+    id: "life-pharmacy",
     name: "Life Pharmacy",
     image: "https://placehold.co/200x150.png",
     rating: 5,
@@ -105,8 +93,172 @@ export const vendors = [
     price: 2000,
     distance: "900 m",
     priceRange: "$$",
-    tags: ["Stores", "Pharmacy"]
+    tags: ["Pharmacy"],
+    products: [
+        { id: 'panadol', name: 'Panadol Extra', price: 500, image: 'https://placehold.co/100x100.png' },
+        { id: 'vitamin-c', name: 'Vitamin C Tablets', price: 1500, image: 'https://placehold.co/100x100.png' },
+    ]
   },
+  {
+    id: "mama-delight",
+    name: "Mama's Delight",
+    image: "https://placehold.co/200x150.png",
+    rating: 4.8,
+    deliveryTime: "25-30 min",
+    logo: "https://placehold.co/40x40.png",
+    price: 2500,
+    distance: "1.2 km",
+    priceRange: "$$",
+    tags: ["Food", "Swallow", "Nigerian"],
+    products: [
+        { id: 'amala', name: 'Amala with Ewedu & Gbegiri', price: 2500, image: 'https://placehold.co/100x100.png' },
+        { id: 'fura', name: 'Fura da Nono', price: 1000, image: 'https://placehold.co/100x100.png' },
+    ]
+  },
+  {
+    id: "kakas-kitchen",
+    name: "Kaka's Kitchen",
+    image: "https://placehold.co/200x150.png",
+    rating: 4.9,
+    deliveryTime: "20-25 min",
+    logo: "https://placehold.co/40x40.png",
+    price: 3000,
+    distance: "500 m",
+    priceRange: "$$",
+    tags: ["Food", "Rice Dishes", "Grills"],
+    products: [
+        { id: 'chicken-wings', name: 'Spicy Chicken Wings', price: 3000, image: 'https://placehold.co/100x100.png' },
+        { id: 'ram-suya', name: 'Ram Suya Skewers', price: 3500, image: 'https://placehold.co/100x100.png' },
+    ]
+  },
+  {
+    id: "wellcare-supermarket",
+    name: "Wellcare Supermarket",
+    image: "https://placehold.co/200x150.png",
+    rating: 4.5,
+    deliveryTime: "45-60 min",
+    logo: "https://placehold.co/40x40.png",
+    price: 1000,
+    distance: "2.5 km",
+    priceRange: "$",
+    tags: ["Supermarkets", "Groceries"],
+    products: [
+        { id: 'bread', name: 'Sliced Bread', price: 800, image: 'https://placehold.co/100x100.png' },
+        { id: 'eggs', name: 'Crate of Eggs', price: 3000, image: 'https://placehold.co/100x100.png' },
+    ]
+  },
+  {
+    id: "healthplus-pharmacy",
+    name: "HealthPlus Pharmacy",
+    image: "https://placehold.co/200x150.png",
+    rating: 4.7,
+    deliveryTime: "15-20 min",
+    logo: "https://placehold.co/40x40.png",
+    price: 1500,
+    distance: "300 m",
+    priceRange: "$$",
+    tags: ["Pharmacy"],
+    products: [
+        { id: 'cough-syrup', name: 'Cough Syrup', price: 1200, image: 'https://placehold.co/100x100.png' },
+        { id: 'plasters', name: 'Band-Aids Pack', price: 400, image: 'https://placehold.co/100x100.png' },
+    ]
+  },
+  {
+    id: "sweet-treats",
+    name: "Sweet Treats",
+    image: "https://placehold.co/200x150.png",
+    rating: 4.6,
+    deliveryTime: "30-40 min",
+    logo: "https://placehold.co/40x40.png",
+    price: 1500,
+    distance: "1.8 km",
+    priceRange: "$",
+    tags: ["Food", "Desserts", "Snacks"],
+    products: [
+        { id: 'ice-cream', name: 'Vanilla Ice Cream Tub', price: 2500, image: 'https://placehold.co/100x100.png' },
+        { id: 'doughnuts', name: 'Dozen Doughnuts', price: 3000, image: 'https://placehold.co/100x100.png' },
+    ]
+  },
+  {
+    id: "fresh-mart",
+    name: "FreshMart",
+    image: "https://placehold.co/200x150.png",
+    rating: 4.8,
+    deliveryTime: "35-45 min",
+    logo: "https://placehold.co/40x40.png",
+    price: 2000,
+    distance: "2.1 km",
+    priceRange: "$$",
+    tags: ["Supermarkets", "Groceries"],
+     products: [
+        { id: 'apples', name: 'Fresh Apples (1kg)', price: 2000, image: 'https://placehold.co/100x100.png' },
+        { id: 'carrots', name: 'Carrots (Bag)', price: 1000, image: 'https://placehold.co/100x100.png' },
+    ]
+  },
+  {
+    id: "city-pharmacy",
+    name: "City Pharmacy",
+    image: "https://placehold.co/200x150.png",
+    rating: 4.4,
+    deliveryTime: "20-30 min",
+    logo: "https://placehold.co/40x40.png",
+    price: 800,
+    distance: "1.1 km",
+    priceRange: "$",
+    tags: ["Pharmacy"],
+     products: [
+        { id: 'painkillers', name: 'Ibuprofen', price: 800, image: 'https://placehold.co/100x100.png' },
+        { id: 'antiseptic', name: 'Antiseptic Wipes', price: 600, image: 'https://placehold.co/100x100.png' },
+    ]
+  },
+  {
+    id: "global-bites",
+    name: "Global Bites",
+    image: "https://placehold.co/200x150.png",
+    rating: 4.7,
+    deliveryTime: "40-50 min",
+    logo: "https://placehold.co/40x40.png",
+    price: 5000,
+    distance: "3.5 km",
+    priceRange: "$$$",
+    tags: ["Food", "International"],
+     products: [
+        { id: 'pizza', name: 'Margherita Pizza', price: 6000, image: 'https://placehold.co/100x100.png' },
+        { id: 'pasta', name: 'Chicken Alfredo Pasta', price: 5500, image: 'https://placehold.co/100x100.png' },
+    ]
+  },
+  {
+    id: "corner-shop",
+    name: "The Corner Shop",
+    image: "https://placehold.co/200x150.png",
+    rating: 4.9,
+    deliveryTime: "5-10 min",
+    logo: "https://placehold.co/40x40.png",
+    price: 300,
+    distance: "100 m",
+    priceRange: "$",
+    tags: ["Supermarkets", "Snacks", "Drinks"],
+     products: [
+        { id: 'coke', name: 'Coca-Cola Can', price: 300, image: 'https://placehold.co/100x100.png' },
+        { id: 'water', name: 'Bottled Water', price: 200, image: 'https://placehold.co/100x100.png' },
+    ]
+  },
+    {
+    id: "dan-wake-spot",
+    name: "Dan Wake Spot",
+    image: "https://placehold.co/200x150.png",
+    rating: 4.9,
+    deliveryTime: "15-20 min",
+    logo: "https://placehold.co/40x40.png",
+    price: 1500,
+    distance: "600m",
+    priceRange: "$",
+    tags: ["Food", "Nigerian", "Swallow"],
+     products: [
+        { id: 'dan-wake', name: 'Dan Wake Special', price: 1500, image: 'https://placehold.co/100x100.png' },
+        { id: 'zobo', name: 'Zobo Drink', price: 500, image: 'https://placehold.co/100x100.png' },
+    ]
+  }
 ];
 
 
