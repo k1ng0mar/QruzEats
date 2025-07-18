@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Star } from "lucide-react";
 
 type VendorCardProps = {
-  id: string;
+  id: number;
   name: string;
   rating: number;
   deliveryTime: string;
@@ -64,3 +64,5 @@ export function VendorCard({
     </Link>
   );
 }
+
+    

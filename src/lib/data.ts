@@ -1,3 +1,4 @@
+
 import {Dessert, GlassWater, Cookie, ShoppingBasket, Pill} from 'lucide-react';
 import React from 'react';
 
@@ -27,236 +28,229 @@ export const promotions = [
   { image: "https://placehold.co/600x300.png", alt: "Promotion 3" },
 ];
 
-export const popularStores = [
-    { id: "sidi-and-sons", name: "Sidi & Sons", logo: "https://placehold.co/140x96.png", distance: "900 m", rating: 5 },
-    { id: "smile-store", name: "Smile Store", logo: "https://placehold.co/140x96.png", distance: "1 km", rating: 5 },
-    { id: "groceryhub", name: "GroceryHub", logo: "https://placehold.co/140x96.png", distance: "1.2 km", rating: 4.5 },
-    { id: "quickmart", name: "QuickMart", logo: "https://placehold.co/140x96.png", distance: "1.5 km", rating: 4.3 },
-];
-
 export const vendors = [
   {
-    id: "afrocon",
+    id: 1,
     name: "Afrocon",
     image: "https://placehold.co/200x150.png",
     rating: 5,
     deliveryTime: "30-35 min",
-    logo: "https://placehold.co/40x40.png",
+    logo: "https://placehold.co/80x80.png",
     price: 7000,
     distance: "200 m",
     priceRange: "$$$",
     tags: ["Food", "Rice Dishes", "Nigerian"],
     products: [
-      { id: 'jollof-chicken', name: 'Jollof Rice & Chicken', price: 3500, image: 'https://placehold.co/100x100.png' },
-      { id: 'fried-plantain', name: 'Fried Plantain (Dodo)', price: 1500, image: 'https://placehold.co/100x100.png' },
+      { id: 'prod-1-1', name: 'Jollof Rice & Chicken', price: 3500, image: 'https://placehold.co/100x100.png', description: 'Smoky party jollof with succulent grilled chicken.', category: 'Rice Dishes', tags: ['popular'] },
+      { id: 'prod-1-2', name: 'Fried Plantain (Dodo)', price: 1500, image: 'https://placehold.co/100x100.png', description: 'Sweet, ripe plantain fried to golden perfection.', category: 'Sides' },
     ]
   },
   {
-    id: "grill-house",
+    id: 2,
     name: "Grill House K...",
     image: "https://placehold.co/200x150.png",
     rating: 5,
     deliveryTime: "10-25 min",
-    logo: "https://placehold.co/40x40.png",
+    logo: "https://placehold.co/80x80.png",
     price: 7000,
     distance: "800 m",
     priceRange: "$$$",
     tags: ["Food", "Grills"],
     products: [
-        { id: 'bbq-burger', name: 'BBQ Chicken Burger', price: 4500, image: 'https://placehold.co/100x100.png' },
-        { id: 'suya-platter', name: 'Full Chicken Suya', price: 4000, image: 'https://placehold.co/100x100.png' },
+        { id: 'prod-2-1', name: 'BBQ Chicken Burger', price: 4500, image: 'https://placehold.co/100x100.png', description: 'Juicy chicken burger with our special BBQ sauce.', category: 'Grills', tags: ['popular'] },
+        { id: 'prod-2-2', name: 'Full Chicken Suya', price: 4000, image: 'https://placehold.co/100x100.png', description: 'Spicy grilled chicken suya, a northern classic.', category: 'Grills', tags: ['popular'] },
     ]
   },
   {
-    id: "sidi-and-sons",
+    id: 3,
     name: "Sidi & Sons",
     image: "https://placehold.co/200x150.png",
     rating: 5,
     deliveryTime: "60+ min",
-    logo: "https://placehold.co/40x40.png",
+    logo: "https://placehold.co/80x80.png",
     price: 500,
     distance: "700 m",
     priceRange: "$",
     tags: ["Supermarkets", "Groceries"],
     products: [
-        { id: 'indomie', name: 'Indomie Noodles Carton', price: 8000, image: 'https://placehold.co/100x100.png' },
-        { id: 'milk', name: 'Peak Milk Sachet', price: 500, image: 'https://placehold.co/100x100.png' },
+        { id: 'prod-3-1', name: 'Indomie Noodles Carton', price: 8000, image: 'https://placehold.co/100x100.png', description: 'A full carton of instant noodles.', category: 'Pantry' },
+        { id: 'prod-3-2', name: 'Peak Milk Sachet', price: 500, image: 'https://placehold.co/100x100.png', description: 'Single serving sachet of powdered milk.', category: 'Dairy' },
     ]
   },
   {
-    id: "life-pharmacy",
+    id: 4,
     name: "Life Pharmacy",
     image: "https://placehold.co/200x150.png",
     rating: 5,
     deliveryTime: "30-35 min",
-    logo: "https://placehold.co/40x40.png",
+    logo: "https://placehold.co/80x80.png",
     price: 2000,
     distance: "900 m",
     priceRange: "$$",
     tags: ["Pharmacy"],
     products: [
-        { id: 'panadol', name: 'Panadol Extra', price: 500, image: 'https://placehold.co/100x100.png' },
-        { id: 'vitamin-c', name: 'Vitamin C Tablets', price: 1500, image: 'https://placehold.co/100x100.png' },
+        { id: 'prod-4-1', name: 'Panadol Extra', price: 500, image: 'https://placehold.co/100x100.png', description: 'For fast relief of aches and pain.', category: 'Pain Relief' },
+        { id: 'prod-4-2', name: 'Vitamin C Tablets', price: 1500, image: 'https://placehold.co/100x100.png', description: 'Boost your immune system.', category: 'Vitamins' },
     ]
   },
   {
-    id: "mama-delight",
+    id: 5,
     name: "Mama's Delight",
     image: "https://placehold.co/200x150.png",
     rating: 4.8,
     deliveryTime: "25-30 min",
-    logo: "https://placehold.co/40x40.png",
+    logo: "https://placehold.co/80x80.png",
     price: 2500,
     distance: "1.2 km",
     priceRange: "$$",
     tags: ["Food", "Swallow", "Nigerian"],
     products: [
-        { id: 'amala', name: 'Amala with Ewedu & Gbegiri', price: 2500, image: 'https://placehold.co/100x100.png' },
-        { id: 'fura', name: 'Fura da Nono', price: 1000, image: 'https://placehold.co/100x100.png' },
+        { id: 'prod-5-1', name: 'Amala with Ewedu & Gbegiri', price: 2500, image: 'https://placehold.co/100x100.png', description: 'The classic yoruba delicacy, served hot.', category: 'Local', tags: ['popular'] },
+        { id: 'prod-5-2', name: 'Fura da Nono', price: 1000, image: 'https://placehold.co/100x100.png', description: 'A refreshing yoghurt and millet drink.', category: 'Drinks' },
     ]
   },
   {
-    id: "kakas-kitchen",
+    id: 6,
     name: "Kaka's Kitchen",
     image: "https://placehold.co/200x150.png",
     rating: 4.9,
     deliveryTime: "20-25 min",
-    logo: "https://placehold.co/40x40.png",
+    logo: "https://placehold.co/80x80.png",
     price: 3000,
     distance: "500 m",
     priceRange: "$$",
     tags: ["Food", "Rice Dishes", "Grills"],
     products: [
-        { id: 'chicken-wings', name: 'Spicy Chicken Wings', price: 3000, image: 'https://placehold.co/100x100.png' },
-        { id: 'ram-suya', name: 'Ram Suya Skewers', price: 3500, image: 'https://placehold.co/100x100.png' },
+        { id: 'prod-6-1', name: 'Spicy Chicken Wings', price: 3000, image: 'https://placehold.co/100x100.png', description: '6 pieces of our signature spicy wings.', category: 'Grills', tags: ['popular'] },
+        { id: 'prod-6-2', name: 'Ram Suya Skewers', price: 3500, image: 'https://placehold.co/100x100.png', description: 'Tender ram meat grilled with yaji spice.', category: 'Grills' },
     ]
   },
   {
-    id: "wellcare-supermarket",
+    id: 7,
     name: "Wellcare Supermarket",
     image: "https://placehold.co/200x150.png",
     rating: 4.5,
     deliveryTime: "45-60 min",
-    logo: "https://placehold.co/40x40.png",
+    logo: "https://placehold.co/80x80.png",
     price: 1000,
     distance: "2.5 km",
     priceRange: "$",
     tags: ["Supermarkets", "Groceries"],
     products: [
-        { id: 'bread', name: 'Sliced Bread', price: 800, image: 'https://placehold.co/100x100.png' },
-        { id: 'eggs', name: 'Crate of Eggs', price: 3000, image: 'https://placehold.co/100x100.png' },
+        { id: 'prod-7-1', name: 'Sliced Bread', price: 800, image: 'https://placehold.co/100x100.png', description: 'Freshly baked sliced bread.', category: 'Bakery' },
+        { id: 'prod-7-2', name: 'Crate of Eggs', price: 3000, image: 'https://placehold.co/100x100.png', description: 'A crate of 30 fresh eggs.', category: 'Dairy' },
     ]
   },
   {
-    id: "healthplus-pharmacy",
+    id: 8,
     name: "HealthPlus Pharmacy",
     image: "https://placehold.co/200x150.png",
     rating: 4.7,
     deliveryTime: "15-20 min",
-    logo: "https://placehold.co/40x40.png",
+    logo: "https://placehold.co/80x80.png",
     price: 1500,
     distance: "300 m",
     priceRange: "$$",
     tags: ["Pharmacy"],
     products: [
-        { id: 'cough-syrup', name: 'Cough Syrup', price: 1200, image: 'https://placehold.co/100x100.png' },
-        { id: 'plasters', name: 'Band-Aids Pack', price: 400, image: 'https://placehold.co/100x100.png' },
+        { id: 'prod-8-1', name: 'Cough Syrup', price: 1200, image: 'https://placehold.co/100x100.png', description: 'For relief from cough and cold.', category: 'Cold & Flu' },
+        { id: 'prod-8-2', name: 'Plasters Pack', price: 400, image: 'https://placehold.co/100x100.png', description: 'Pack of assorted adhesive bandages.', category: 'First Aid' },
     ]
   },
   {
-    id: "sweet-treats",
+    id: 9,
     name: "Sweet Treats",
     image: "https://placehold.co/200x150.png",
     rating: 4.6,
     deliveryTime: "30-40 min",
-    logo: "https://placehold.co/40x40.png",
+    logo: "https://placehold.co/80x80.png",
     price: 1500,
     distance: "1.8 km",
     priceRange: "$",
     tags: ["Food", "Desserts", "Snacks"],
     products: [
-        { id: 'ice-cream', name: 'Vanilla Ice Cream Tub', price: 2500, image: 'https://placehold.co/100x100.png' },
-        { id: 'doughnuts', name: 'Dozen Doughnuts', price: 3000, image: 'https://placehold.co/100x100.png' },
+        { id: 'prod-9-1', name: 'Vanilla Ice Cream Tub', price: 2500, image: 'https://placehold.co/100x100.png', description: '500ml tub of creamy vanilla ice cream.', category: 'Desserts', tags: ['popular'] },
+        { id: 'prod-9-2', name: 'Dozen Doughnuts', price: 3000, image: 'https://placehold.co/100x100.png', description: 'A dozen assorted fresh doughnuts.', category: 'Desserts' },
     ]
   },
   {
-    id: "fresh-mart",
+    id: 10,
     name: "FreshMart",
     image: "https://placehold.co/200x150.png",
     rating: 4.8,
     deliveryTime: "35-45 min",
-    logo: "https://placehold.co/40x40.png",
+    logo: "https://placehold.co/80x80.png",
     price: 2000,
     distance: "2.1 km",
     priceRange: "$$",
     tags: ["Supermarkets", "Groceries"],
      products: [
-        { id: 'apples', name: 'Fresh Apples (1kg)', price: 2000, image: 'https://placehold.co/100x100.png' },
-        { id: 'carrots', name: 'Carrots (Bag)', price: 1000, image: 'https://placehold.co/100x100.png' },
+        { id: 'prod-10-1', name: 'Fresh Apples (1kg)', price: 2000, image: 'https://placehold.co/100x100.png', description: 'A kilo of fresh, crunchy apples.', category: 'Fruits' },
+        { id: 'prod-10-2', name: 'Carrots (Bag)', price: 1000, image: 'https://placehold.co/100x100.png', description: 'A bag of fresh carrots.', category: 'Vegetables' },
     ]
   },
   {
-    id: "city-pharmacy",
+    id: 11,
     name: "City Pharmacy",
     image: "https://placehold.co/200x150.png",
     rating: 4.4,
     deliveryTime: "20-30 min",
-    logo: "https://placehold.co/40x40.png",
+    logo: "https://placehold.co/80x80.png",
     price: 800,
     distance: "1.1 km",
     priceRange: "$",
     tags: ["Pharmacy"],
      products: [
-        { id: 'painkillers', name: 'Ibuprofen', price: 800, image: 'https://placehold.co/100x100.png' },
-        { id: 'antiseptic', name: 'Antiseptic Wipes', price: 600, image: 'https://placehold.co/100x100.png' },
+        { id: 'prod-11-1', name: 'Ibuprofen', price: 800, image: 'https://placehold.co/100x100.png', description: 'For general pain relief.', category: 'Pain Relief' },
+        { id: 'prod-11-2', name: 'Antiseptic Wipes', price: 600, image: 'https://placehold.co/100x100.png', description: 'For cleaning wounds and surfaces.', category: 'First Aid' },
     ]
   },
   {
-    id: "global-bites",
+    id: 12,
     name: "Global Bites",
     image: "https://placehold.co/200x150.png",
     rating: 4.7,
     deliveryTime: "40-50 min",
-    logo: "https://placehold.co/40x40.png",
+    logo: "https://placehold.co/80x80.png",
     price: 5000,
     distance: "3.5 km",
     priceRange: "$$$",
     tags: ["Food", "International"],
      products: [
-        { id: 'pizza', name: 'Margherita Pizza', price: 6000, image: 'https://placehold.co/100x100.png' },
-        { id: 'pasta', name: 'Chicken Alfredo Pasta', price: 5500, image: 'https://placehold.co/100x100.png' },
+        { id: 'prod-12-1', name: 'Margherita Pizza', price: 6000, image: 'https://placehold.co/100x100.png', description: 'Classic pizza with tomato, mozzarella, and basil.', category: 'International', tags: ['popular'] },
+        { id: 'prod-12-2', name: 'Chicken Alfredo Pasta', price: 5500, image: 'https://placehold.co/100x100.png', description: 'Creamy alfredo pasta with grilled chicken.', category: 'International' },
     ]
   },
   {
-    id: "corner-shop",
+    id: 13,
     name: "The Corner Shop",
     image: "https://placehold.co/200x150.png",
     rating: 4.9,
     deliveryTime: "5-10 min",
-    logo: "https://placehold.co/40x40.png",
+    logo: "https://placehold.co/80x80.png",
     price: 300,
     distance: "100 m",
     priceRange: "$",
     tags: ["Supermarkets", "Snacks", "Drinks"],
      products: [
-        { id: 'coke', name: 'Coca-Cola Can', price: 300, image: 'https://placehold.co/100x100.png' },
-        { id: 'water', name: 'Bottled Water', price: 200, image: 'https://placehold.co/100x100.png' },
+        { id: 'prod-13-1', name: 'Coca-Cola Can', price: 300, image: 'https://placehold.co/100x100.png', description: 'A cold can of Coca-Cola.', category: 'Drinks' },
+        { id: 'prod-13-2', name: 'Bottled Water', price: 200, image: 'https://placehold.co/100x100.png', description: '50cl bottled water.', category: 'Drinks' },
     ]
   },
-    {
-    id: "dan-wake-spot",
+  {
+    id: 14,
     name: "Dan Wake Spot",
     image: "https://placehold.co/200x150.png",
     rating: 4.9,
     deliveryTime: "15-20 min",
-    logo: "https://placehold.co/40x40.png",
+    logo: "https://placehold.co/80x80.png",
     price: 1500,
     distance: "600m",
     priceRange: "$",
     tags: ["Food", "Nigerian", "Swallow"],
      products: [
-        { id: 'dan-wake', name: 'Dan Wake Special', price: 1500, image: 'https://placehold.co/100x100.png' },
-        { id: 'zobo', name: 'Zobo Drink', price: 500, image: 'https://placehold.co/100x100.png' },
+        { id: 'prod-14-1', name: 'Dan Wake Special', price: 1500, image: 'https://placehold.co/100x100.png', description: 'Soft, chewy dumplings tossed in spicy oil, yaji, and sometimes topped with vegetables and a boiled egg.', category: 'Local', tags: ['popular'] },
+        { id: 'prod-14-2', name: 'Zobo Drink', price: 500, image: 'https://placehold.co/100x100.png', description: 'Spiced hibiscus drink, served chilled.', category: 'Drinks' },
     ]
   }
 ];
@@ -265,21 +259,21 @@ export const vendors = [
 export const curatedMarkets = [
   {
     name: "Dawanau Market",
-    image: "https://placehold.co/600x400/4F3D56/E6E0E9.png?text=Dawanau",
+    image: "https://placehold.co/600x400.png",
     rating: 4.7,
     deliveryTime: "15-25 min",
     distance: "0.5 km",
   },
   {
     name: "Kasuwar Kurmi",
-    image: "https://placehold.co/600x400/4F3D56/E6E0E9.png?text=Kurmi",
+    image: "https://placehold.co/600x400.png",
     rating: 4.8,
     deliveryTime: "20-30 min",
     distance: "1.2 km",
   },
    {
     name: "Yan Lemo Market",
-    image: "https://placehold.co/600x400/4F3D56/E6E0E9.png?text=Yan+Lemo",
+    image: "https://placehold.co/600x400.png",
     rating: 4.6,
     deliveryTime: "25-35 min",
     distance: "2.1 km",
@@ -293,7 +287,7 @@ export const featuredCuisines = [
     longDescription: `Masa, also known as Waina, is a popular Northern Nigerian food item that resembles a pan-fried rice cake or pancake. It is made from a fermented batter of non-parboiled rice, which gives it a slightly sour and tangy taste. The batter is cooked in a special pan with circular indentations, similar to a Danish Aebleskiver pan, which gives Masa its characteristic round and puffy shape.
 
 Traditionally, Masa is enjoyed as a breakfast food or a snack throughout the day. It can be eaten plain or served with a variety of accompaniments, most commonly Miyan Taushe (a savory pumpkin stew) or a sweet syrup. Its soft, spongy texture and unique flavor make it a versatile and cherished dish in Arewa culture.`,
-    image: "https://placehold.co/600x400/633d4f/E6E0E9.png?text=Masa",
+    image: "https://placehold.co/600x400.png",
     origin: "Originated from the Hausa people of Northern Nigeria.",
     culturalSignificance: "Often served during weddings, naming ceremonies, and other celebrations.",
     bestTimeToEnjoy: "Commonly eaten for breakfast or as a light evening meal.",
@@ -304,7 +298,7 @@ Traditionally, Masa is enjoyed as a breakfast food or a snack throughout the day
     longDescription: `Jollof rice is a one-pot rice dish cooked across West Africa. The base is rice, tomatoes, tomato paste, onions, scotch bonnet peppers, salt, and spices. It shows up at celebrations, family gatherings, and everyday meals.
 
 Its origins trace to the Senegambian region, and Nigeria and Ghana each have their own version. Nigerian Jollof gets its smoky flavor from cooking over an open fire until a layer of burnt rice forms at the bottom of the pot.`,
-    image: "https://placehold.co/600x400/633d4f/E6E0E9.png?text=Jollof",
+    image: "https://placehold.co/600x400.png",
     origin: "Traced back to the Senegambian region, now a West African icon.",
     culturalSignificance: "An essential dish at parties, celebrations, and family gatherings.",
     bestTimeToEnjoy: "Any time! Perfect for lunch, dinner, or any festive occasion.",
@@ -313,9 +307,11 @@ Its origins trace to the Senegambian region, and Nigeria and Ghana each have the
     name: "Suya",
     shortDescription: "Spiced grilled meat skewers - the king of Nigerian street food.",
     longDescription: `Suya is a spicy skewered meat, which is a popular food item in West Africa. It is traditionally prepared by the Hausa people of Northern Nigeria, Cameroon, Niger, and some parts of Sudan. Suya is generally made with skewered beef, ram, or chicken. Innards such as kidney, liver and tripe are also used. The thinly sliced meat is marinated in various spices which include peanut cake, salt, vegetable oil and other flavorings, and then barbecued.`,
-    image: "https://placehold.co/600x400/633d4f/E6E0E9.png?text=Suya",
+    image: "https://placehold.co/600x400.png",
     origin: "Originated from the Hausa people of Northern Nigeria.",
     culturalSignificance: "A popular evening snack, best enjoyed with friends and cold drinks.",
     bestTimeToEnjoy: "Perfect for evening meals or as a late-night snack.",
   }
 ];
+
+    

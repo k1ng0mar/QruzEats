@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
@@ -6,32 +7,17 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import { promotions, vendors, popularStores } from "@/lib/data";
+import { promotions, vendors } from "@/lib/data";
 import { VendorCard } from "@/components/qruz/vendor-card";
-import { Star, UtensilsCrossed, ShoppingCart } from "lucide-react";
+import { UtensilsCrossed, ShoppingCart } from "lucide-react";
 import { CategorySelectionCard } from "@/components/qruz/category-selection-card";
 import { CuisineCarousel } from "@/components/qruz/cuisine-carousel";
 
-const StoreCard = ({ name, logo, rating, distance }: { name: string, logo: string, rating: number, distance: string }) => (
-    <Link href="#" className="block flex-shrink-0 w-[140px]">
-        <Card className="w-full overflow-hidden border-none shadow-none bg-transparent">
-            <CardContent className="p-0 flex flex-col items-start text-left">
-                 <div className="w-full h-24 rounded-lg overflow-hidden mb-2">
-                    <Image src={logo} alt={`${name} logo`} width={140} height={96} className="w-full h-full object-cover"/>
-                 </div>
-                 <h3 className="font-bold text-base font-headline">{name}</h3>
-                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                    <span>{rating}</span>
-                    <span className="text-xs">&#x2022; {distance}</span>
-                 </div>
-            </CardContent>
-        </Card>
-    </Link>
-);
-
 
 export default function Home() {
+  const popularStores = vendors.filter(v => v.rating >= 4.9).slice(0, 6);
+  const bestSellers = vendors.slice(0, 6);
+
   return (
     <div className="space-y-8 p-4 md:p-6 pb-24">
       <section className="grid grid-cols-2 gap-4">
@@ -89,8 +75,10 @@ export default function Home() {
           Popular Stores nearby
         </h2>
          <div className="flex space-x-4 overflow-x-auto pb-2 -mx-4 px-4">
-          {popularStores.map((store) => (
-              <StoreCard key={store.name} {...store} />
+          {popularStores.map((vendor) => (
+            <div key={vendor.id} className="w-[45vw] md:w-[200px] flex-shrink-0">
+              <VendorCard {...vendor} />
+            </div>
           ))}
         </div>
       </section>
@@ -100,11 +88,13 @@ export default function Home() {
           Best sellers
         </h2>
         <div className="grid grid-cols-2 gap-4">
-          {vendors.map((vendor) => (
-            <VendorCard key={vendor.name} {...vendor} />
+          {bestSellers.map((vendor) => (
+            <VendorCard key={vendor.id} {...vendor} />
           ))}
         </div>
       </section>
     </div>
   );
 }
+
+    
