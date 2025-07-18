@@ -11,6 +11,18 @@ export const categories = [
     image: "https://placehold.co/600x400.png",
     href: "#",
   },
+  {
+    name: "Nigerian",
+    description: "Local Nigerian dishes",
+    image: "https://placehold.co/600x400.png",
+    href: "#",
+  },
+  {
+    name: "Grills",
+    description: "Barbecue and grilled food",
+    image: "https://placehold.co/600x400.png",
+    href: "#",
+  }
 ];
 
 export const promotions = [
@@ -27,6 +39,8 @@ export const vendors = [
     rating: 4.8,
     deliveryTime: "25-35 min",
     logo: "https://placehold.co/100x100.png",
+    priceRange: "$$",
+    tags: ["Food", "Nigerian"]
   },
   {
     name: "Kaka's Kitchen",
@@ -34,6 +48,8 @@ export const vendors = [
     rating: 4.9,
     deliveryTime: "30-40 min",
     logo: "https://placehold.co/100x100.png",
+    priceRange: "$$$",
+    tags: ["Food", "Grills"]
   },
   {
     name: "Danwake Central",
@@ -41,6 +57,8 @@ export const vendors = [
     rating: 4.7,
     deliveryTime: "20-30 min",
     logo: "https://placehold.co/100x100.png",
+    priceRange: "$",
+    tags: ["Food", "Nigerian"]
   },
   {
     name: "Fura Bliss",
@@ -48,6 +66,8 @@ export const vendors = [
     rating: 4.6,
     deliveryTime: "15-25 min",
     logo: "https://placehold.co/100x100.png",
+    priceRange: "$",
+    tags: ["Food", "Desserts"]
   },
   {
     name: "Arewa Grillz",
@@ -55,6 +75,8 @@ export const vendors = [
     rating: 4.8,
     deliveryTime: "35-45 min",
     logo: "https://placehold.co/100x100.png",
+    priceRange: "$$$",
+    tags: ["Food", "Grills"]
   },
   {
     name: "The Masa Spot",
@@ -62,6 +84,8 @@ export const vendors = [
     rating: 4.9,
     deliveryTime: "25-35 min",
     logo: "https://placehold.co/100x100.png",
+    priceRange: "$$",
+    tags: ["Food", "Snacks"]
   },
     {
     name: "Tuwo Palace",
@@ -69,6 +93,8 @@ export const vendors = [
     rating: 4.5,
     deliveryTime: "40-50 min",
     logo: "https://placehold.co/100x100.png",
+    priceRange: "$$",
+    tags: ["Food", "Nigerian"]
   },
   {
     name: "Yaji Spice",
@@ -76,5 +102,7 @@ export const vendors = [
     rating: 4.7,
     deliveryTime: "30-40 min",
     logo: "https://placehold.co/100x100.png",
+    priceRange: "$$",
+    tags: ["Food", "Nigerian"]
   },
 ];

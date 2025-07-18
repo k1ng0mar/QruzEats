@@ -10,6 +10,7 @@ type VendorCardProps = {
   rating: number;
   deliveryTime: string;
   logo: string;
+  priceRange: string;
 };
 
 export function VendorCard({
@@ -18,6 +19,7 @@ export function VendorCard({
   rating,
   deliveryTime,
   logo,
+  priceRange
 }: VendorCardProps) {
   return (
     <Link href="#" className="group">
@@ -50,6 +52,7 @@ export function VendorCard({
             <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
             <span>{rating}</span>
           </div>
+          <Badge variant="outline">{priceRange}</Badge>
           <div className="flex items-center gap-1">
             <Clock className="w-4 h-4" />
             <span>{deliveryTime}</span>
