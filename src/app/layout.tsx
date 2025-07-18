@@ -15,6 +15,8 @@ export default function RootLayout({
 }>) {
   const pathname = usePathname();
   const showHeader = ['/', '/food', '/shop'].includes(pathname);
+  const showBottomNav = !pathname.startsWith('/reels');
+
 
   return (
     <html lang="en">
@@ -39,7 +41,7 @@ export default function RootLayout({
             {children}
           </main>
         </div>
-        <BottomNav />
+        {showBottomNav && <BottomNav />}
         <Toaster />
       </body>
     </html>

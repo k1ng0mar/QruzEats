@@ -1,18 +1,23 @@
 import {Dessert, GlassWater, Cookie, ShoppingBasket, Pill} from 'lucide-react';
 import React from 'react';
 
-// The SvgIcon component was moved to src/app/search/page.tsx to fix a parsing error.
-// This file should only contain data exports.
+const SvgIcon = ({ d, d2 }: { d: string, d2?: string }) => (
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
+        <path d={d}></path>
+        {d2 && <path d={d2}></path>}
+    </svg>
+);
+
 
 export const topCategories = [
-    { name: "Grills", icon: React.createElement('svg', {width:"32", height:"32", viewBox:"0 0 24 24", fill:"none", stroke:"currentColor", strokeWidth:"1.5", strokeLinecap:"round", strokeLinejoin:"round", className:"text-primary"}, React.createElement('path', {d: "M8.5 10.5c3.25-1 4.5-2.25 4.5-3.5 0-1.5-1.5-2.5-3-2.5-2.5 0-4.5 2-4.5 4.5"}), React.createElement('path', {d: "M11 14v7"})) },
-    { name: "Rice Dishes", icon: React.createElement('svg', {width:"32", height:"32", viewBox:"0 0 24 24", fill:"none", stroke:"currentColor", strokeWidth:"1.5", strokeLinecap:"round", strokeLinejoin:"round", className:"text-primary"}, React.createElement('path', {d: "M2 12.25V12a10 10 0 115.93-9.14"}), React.createElement('path', {d: "M12.5 7.5L22 12l-4-1-3.5-4Z"})) },
-    { name: "Swallow", icon: React.createElement('svg', {width:"32", height:"32", viewBox:"0 0 24 24", fill:"none", stroke:"currentColor", strokeWidth:"1.5", strokeLinecap:"round", strokeLinejoin:"round", className:"text-primary"}, React.createElement('path', {d: "M12 2a10 10 0 106.33 17.67"}), React.createElement('path', {d: "M12 2a10 10 0 11-6.33 17.67"})) },
-    { name: "Desserts", icon: React.createElement(Dessert, {className: "w-8 h-8 text-primary"}) },
-    { name: "Drinks", icon: React.createElement(GlassWater, {className: "w-8 h-8 text-primary"}) },
-    { name: "Snacks", icon: React.createElement(Cookie, {className: "w-8 h-8 text-primary"}) },
-    { name: "Groceries", icon: React.createElement(ShoppingBasket, {className: "w-8 h-8 text-primary"}) },
-    { name: "Pharmacy", icon: React.createElement(Pill, {className: "w-8 h-8 text-primary"}) },
+    { name: "Grills", icon: <SvgIcon d="M8.5 10.5c3.25-1 4.5-2.25 4.5-3.5 0-1.5-1.5-2.5-3-2.5-2.5 0-4.5 2-4.5 4.5" d2="M11 14v7" /> },
+    { name: "Rice Dishes", icon: <SvgIcon d="M2 12.25V12a10 10 0 115.93-9.14" d2="M12.5 7.5L22 12l-4-1-3.5-4Z" /> },
+    { name: "Swallow", icon: <SvgIcon d="M12 2a10 10 0 106.33 17.67" d2="M12 2a10 10 0 11-6.33 17.67" /> },
+    { name: "Desserts", icon: <Dessert className="w-8 h-8 text-primary"/> },
+    { name: "Drinks", icon: <GlassWater className="w-8 h-8 text-primary"/> },
+    { name: "Snacks", icon: <Cookie className="w-8 h-8 text-primary"/> },
+    { name: "Groceries", icon: <ShoppingBasket className="w-8 h-8 text-primary"/> },
+    { name: "Pharmacy", icon: <Pill className="w-8 h-8 text-primary"/> },
 ];
 
 export const recentSearches = [
