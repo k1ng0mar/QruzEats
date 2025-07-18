@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
+import Link from "next/link";
 
 const orderHistory = [
   {
@@ -81,7 +82,9 @@ export default function HistoryPage() {
           <div className="text-center py-20">
             <h2 className="text-2xl font-headline font-semibold">No order history</h2>
             <p className="text-muted-foreground mt-2">Your past orders will appear here.</p>
-            <Button className="mt-6">Start Shopping</Button>
+            <Button asChild className="mt-6">
+              <Link href="/">Start Shopping</Link>
+            </Button>
           </div>
         )}
       </main>

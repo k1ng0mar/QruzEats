@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
+import Link from "next/link";
 
 const cartItemsByVendor = [
   {
@@ -86,7 +87,9 @@ export default function CartPage() {
           <div className="text-center py-20">
             <h2 className="text-2xl font-headline font-semibold">Your cart is empty</h2>
             <p className="text-muted-foreground mt-2">Add items from restaurants to get started.</p>
-            <Button className="mt-6">Start Shopping</Button>
+            <Button asChild className="mt-6">
+              <Link href="/">Start Shopping</Link>
+            </Button>
           </div>
         )}
       </main>
