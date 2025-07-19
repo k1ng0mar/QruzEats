@@ -1,22 +1,52 @@
-
+'use client';
+import { useState, useEffect } from 'react';
 import Image from "next/image";
-import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import { promotions, vendors as mockVendors } from "@/lib/data";
+import { promotions } from "@/lib/data";
 import { VendorCard } from "@/components/qruz/vendor-card";
-import { UtensilsCrossed, ShoppingCart } from "lucide-react";
+import { UtensilsCrossed, ShoppingCart, Loader2 } from "lucide-react";
 import { CategorySelectionCard } from "@/components/qruz/category-selection-card";
 import { CuisineCarousel } from "@/components/qruz/cuisine-carousel";
+import { db } from "@/lib/firebase";
+import { collection, getDocs } from "firebase/firestore";
 
+type Vendor = {
+  id: string;
+  name: string;
+  rating: number;
+  deliveryTime: string;
+  logo: string;
+  price: number;
+  distance: string;
+  image: string;
+  tags: string[];
+};
 
 export default function Home() {
-  // We'll use the mock data for now on the homepage and switch to firebase later if needed
-  const vendors = mockVendors;
+  const [vendors, setVendors] = useState<Vendor[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchVendors = async () => {
+      setLoading(true);
+      try {
+        const querySnapshot = await getDocs(collection(db, "vendors"));
+        const vendorsData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Vendor));
+        setVendors(vendorsData);
+      } catch (error) {
+        console.error("Error fetching vendors:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchVendors();
+  }, []);
+
   const popularStores = vendors.filter(v => v.rating >= 4.9).slice(0, 6);
   const bestSellers = vendors.slice(0, 6);
 
@@ -71,30 +101,38 @@ export default function Home() {
           </CarouselContent>
         </Carousel>
       </section>
-
-      <section>
-        <h2 className="font-headline text-xl font-bold mb-3">
-          Popular Stores nearby
-        </h2>
-         <div className="flex space-x-4 overflow-x-auto pb-2 -mx-4 px-4">
-          {popularStores.map((vendor) => (
-            <div key={vendor.id} className="w-[45vw] md:w-[200px] flex-shrink-0">
-              <VendorCard {...vendor} />
+      
+      {loading ? (
+        <div className="flex justify-center items-center py-10">
+            <Loader2 className="w-8 h-8 animate-spin text-primary" />
+        </div>
+      ) : (
+        <>
+          <section>
+            <h2 className="font-headline text-xl font-bold mb-3">
+              Popular Stores nearby
+            </h2>
+            <div className="flex space-x-4 overflow-x-auto pb-2 -mx-4 px-4">
+              {popularStores.map((vendor) => (
+                <div key={vendor.id} className="w-[45vw] md:w-[200px] flex-shrink-0">
+                  <VendorCard {...vendor} />
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </section>
+          </section>
 
-      <section>
-        <h2 className="font-headline text-xl font-bold mb-3">
-          Best sellers
-        </h2>
-        <div className="grid grid-cols-2 gap-4">
-          {bestSellers.map((vendor) => (
-            <VendorCard key={vendor.id} {...vendor} />
-          ))}
-        </div>
-      </section>
+          <section>
+            <h2 className="font-headline text-xl font-bold mb-3">
+              Best sellers
+            </h2>
+            <div className="grid grid-cols-2 gap-4">
+              {bestSellers.map((vendor) => (
+                <VendorCard key={vendor.id} {...vendor} />
+              ))}
+            </div>
+          </section>
+        </>
+      )}
     </div>
   );
 }

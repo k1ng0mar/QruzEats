@@ -5,18 +5,14 @@ import { BottomNav } from "@/components/qruz/bottom-nav";
 import { usePathname } from "next/navigation";
 import { Header } from "@/components/qruz/header";
 
-// No metadata export, as it's a client component.
-// Metadata should be handled in specific page.tsx files if needed.
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   const pathname = usePathname();
-  const showHeader = ['/', '/food', '/shop'].includes(pathname);
+  const showHeader = ['/', '/food', '/shop', '/search'].includes(pathname);
   const showBottomNav = !pathname.startsWith('/reels');
-
 
   return (
     <html lang="en">
@@ -36,7 +32,7 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased">
         <div className="relative flex min-h-screen flex-col bg-background">
-          {showHeader && <Header />}
+          {showHeader && !pathname.startsWith('/search') && <Header />}
           <main className="flex-1">
             {children}
           </main>

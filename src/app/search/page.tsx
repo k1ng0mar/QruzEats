@@ -5,14 +5,49 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { SearchHeader } from "@/components/qruz/search-header";
 import { topCategories, recentSearches } from "@/lib/data";
-import { ChevronRight, Loader2 } from "lucide-react";
+import { ChevronRight, Loader2, Dessert, GlassWater, Cookie, ShoppingBasket, Pill } from "lucide-react";
 import { VendorCard } from "@/components/qruz/vendor-card";
 import { db } from "@/lib/firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
-import { vendors as mockVendors } from "@/lib/data"; // Keep for type reference
+import React from 'react';
 
-type Vendor = typeof mockVendors[0] & { id: string };
+type Vendor = {
+  id: string;
+  name: string;
+  rating: number;
+  deliveryTime: string;
+  logo: string;
+  price: number;
+  distance: string;
+  image: string;
+  tags: string[];
+};
 
+const iconComponents: { [key: string]: React.ElementType | React.FC<any> } = {
+  GrillsIcon: (props: any) => (
+    <svg {...props} width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
+      <path d="M8.5 10.5c3.25-1 4.5-2.25 4.5-3.5 0-1.5-1.5-2.5-3-2.5-2.5 0-4.5 2-4.5 4.5"></path>
+      <path d="M11 14v7"></path>
+    </svg>
+  ),
+  RiceDishesIcon: (props: any) => (
+    <svg {...props} width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
+      <path d="M2 12.25V12a10 10 0 115.93-9.14"></path>
+      <path d="M12.5 7.5L22 12l-4-1-3.5-4Z"></path>
+    </svg>
+  ),
+  SwallowIcon: (props: any) => (
+    <svg {...props} width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
+      <path d="M12 2a10 10 0 106.33 17.67"></path>
+      <path d="M12 2a10 10 0 11-6.33 17.67"></path>
+    </svg>
+  ),
+  Dessert: (props: any) => <Dessert {...props} className="w-8 h-8 text-primary" />,
+  GlassWater: (props: any) => <GlassWater {...props} className="w-8 h-8 text-primary" />,
+  Cookie: (props: any) => <Cookie {...props} className="w-8 h-8 text-primary" />,
+  ShoppingBasket: (props: any) => <ShoppingBasket {...props} className="w-8 h-8 text-primary" />,
+  Pill: (props: any) => <Pill {...props} className="w-8 h-8 text-primary" />,
+};
 
 const CategoryChip = ({ label, active, onClick }: { label: string, active?: boolean, onClick: () => void }) => (
   <Button 
@@ -24,24 +59,20 @@ const CategoryChip = ({ label, active, onClick }: { label: string, active?: bool
   </Button>
 );
 
-const SvgIcon = ({ d, d2 }: { d: string, d2?: string }) => (
-    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
-        <path d={d}></path>
-        {d2 && <path d={d2}></path>}
-    </svg>
-);
-
-const CategoryIcon = ({ icon, label, onClick, active }: { icon: React.ReactNode, label: string, onClick: () => void, active: boolean }) => (
-    <div 
-      className="flex flex-col items-center gap-2 cursor-pointer"
-      onClick={onClick}
-    >
-        <div className={`w-16 h-16 rounded-full flex items-center justify-center transition-colors ${active ? 'bg-primary/20' : 'bg-muted'}`}>
-            {icon}
+const CategoryIcon = ({ iconName, label, onClick, active }: { iconName: string, label: string, onClick: () => void, active: boolean }) => {
+    const IconComponent = iconComponents[iconName];
+    return (
+        <div 
+          className="flex flex-col items-center gap-2 cursor-pointer"
+          onClick={onClick}
+        >
+            <div className={`w-16 h-16 rounded-full flex items-center justify-center transition-colors ${active ? 'bg-primary/20' : 'bg-muted'}`}>
+                {IconComponent ? <IconComponent /> : null}
+            </div>
+            <span className={`text-sm font-medium text-center ${active ? 'text-primary font-bold' : ''}`}>{label}</span>
         </div>
-        <span className={`text-sm font-medium text-center ${active ? 'text-primary font-bold' : ''}`}>{label}</span>
-    </div>
-);
+    );
+};
 
 const mainCategories = ["All", "Food", "Supermarkets", "Pharmacy"];
 
@@ -58,7 +89,6 @@ export default function SearchPage() {
             let q = query(vendorsCollection);
 
             if (activeCategory !== "All") {
-                // Tags are stored as an array, so match with array-contains.
                 q = query(vendorsCollection, where("tags", "array-contains", activeCategory));
             }
             
@@ -101,7 +131,7 @@ export default function SearchPage() {
                 {topCategories.map((category) => (
                     <CategoryIcon 
                         key={category.name} 
-                        icon={category.icon} 
+                        iconName={category.iconName} 
                         label={category.name}
                         active={activeCategory === category.name}
                         onClick={() => setActiveCategory(category.name)}

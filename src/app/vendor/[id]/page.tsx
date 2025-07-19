@@ -1,6 +1,4 @@
-
 'use client';
-
 import { use, useState, useEffect } from "react";
 import { notFound } from "next/navigation";
 import Image from "next/image";
@@ -25,9 +23,29 @@ import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { db } from "@/lib/firebase";
 import { doc, getDoc } from "firebase/firestore";
-import { vendors as mockVendors } from "@/lib/data"; // Keep for type reference
 
-type Vendor = typeof mockVendors[0];
+type Product = {
+  id: string;
+  name: string;
+  price: number;
+  image: string;
+  description?: string;
+  category?: string;
+  tags?: string[];
+};
+
+type Vendor = {
+  id: string;
+  name: string;
+  image: string;
+  rating: number;
+  deliveryTime: string;
+  logo: string;
+  price: number;
+  distance: string;
+  tags: string[];
+  products: Product[];
+};
 
 const ActionButton = ({ children, className }: { children: React.ReactNode, className?: string }) => (
     <Button variant="ghost" size="icon" className={cn("bg-white/80 hover:bg-white text-foreground rounded-full shadow-md", className)}>
@@ -44,7 +62,6 @@ const CategoryTab = ({ label, active, onClick, icon }: { label: string, active: 
         {label}
     </button>
 );
-
 
 export default function VendorPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
@@ -67,7 +84,7 @@ export default function VendorPage({ params }: { params: Promise<{ id: string }>
             }
         } catch (error) {
             console.error("Error fetching vendor:", error);
-            // Optionally, handle error state
+            notFound();
         } finally {
             setLoading(false);
         }
@@ -75,7 +92,6 @@ export default function VendorPage({ params }: { params: Promise<{ id: string }>
 
     fetchVendor();
   }, [id]);
-
 
   if (loading) {
     return (
@@ -89,19 +105,14 @@ export default function VendorPage({ params }: { params: Promise<{ id: string }>
     notFound();
   }
   
-  const menuCategories = ["Popular", "Local", ...new Set(vendor.products?.map(p => p.category).filter(Boolean) as string[])];
+  const menuCategories = ["Popular", ...new Set(vendor.products?.map(p => p.category).filter(Boolean) as string[])];
   const uniqueCategories = [...new Set(menuCategories)];
 
   const popularProducts = vendor.products?.filter(p => p.tags?.includes("popular")) || [];
   
   const filteredProducts = activeTab !== "Popular"
     ? vendor.products?.filter(p => p.category === activeTab)
-    : [];
-    
-  const productsToDisplay = activeTab === "Popular"
-    ? popularProducts
-    : filteredProducts;
-
+    : popularProducts;
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -167,19 +178,13 @@ export default function VendorPage({ params }: { params: Promise<{ id: string }>
 
         <section className="sticky top-0 bg-background py-2 z-10 -mx-4 px-4 border-b">
              <div className="flex items-center gap-4 overflow-x-auto pb-1">
-                 <CategoryTab 
-                    label="All" 
-                    icon={<LayoutGrid className="w-4 h-4"/>} 
-                    active={activeTab === 'All'} 
-                    onClick={() => setActiveTab('All')}
-                />
                 {uniqueCategories.map(cat => (
                     cat && <CategoryTab key={cat} label={cat} active={activeTab === cat} onClick={() => setActiveTab(cat)} />
                 ))}
             </div>
         </section>
         
-        {activeTab !== 'Popular' && activeTab !== 'All' ? null : (
+        {activeTab === 'Popular' && popularProducts.length > 0 && (
              <section>
                 <h2 className="text-2xl font-headline font-bold mb-4">Popular</h2>
                 <div className="flex space-x-4 overflow-x-auto pb-4 -mx-4 px-4">
@@ -200,18 +205,18 @@ export default function VendorPage({ params }: { params: Promise<{ id: string }>
 
         <section className="space-y-4">
             <h2 className="text-2xl font-headline font-bold">{activeTab}</h2>
-            {productsToDisplay && productsToDisplay.length > 0 ? (
-                productsToDisplay.map(product => (
+            {filteredProducts.length > 0 ? (
+                filteredProducts.map(product => (
                     <Card key={product.id} className="overflow-hidden shadow-sm">
                         <CardContent className="p-3 flex items-center justify-between gap-4">
                             <div className="flex items-center gap-4 flex-1">
                                 <div className="relative w-24 h-24 flex-shrink-0">
                                     <Image src={product.image} alt={product.name} fill className="rounded-md object-cover"/>
-                                    <Badge className="absolute bottom-1 right-1 bg-background/80 text-foreground hover:bg-background text-xs">₦{product.price.toLocaleString()}</Badge>
                                 </div>
                                 <div className="flex-1">
                                     <h3 className="font-bold font-headline">{product.name}</h3>
                                     <p className="text-muted-foreground text-sm line-clamp-2">{product.description}</p>
+                                     <Badge variant="outline" className="mt-1">₦{product.price.toLocaleString()}</Badge>
                                 </div>
                             </div>
                             <Button size="icon" variant="outline" className="rounded-full w-10 h-10 flex-shrink-0 self-start border-2 border-primary text-primary hover:bg-primary/10">
