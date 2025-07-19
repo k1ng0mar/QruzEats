@@ -1,4 +1,6 @@
 
+import Link from 'next/link';
+
 export default function FoodPage() {
   return (
     <div className="flex flex-col min-h-screen">
@@ -7,6 +9,9 @@ export default function FoodPage() {
         <div className="text-center py-20">
             <h2 className="text-2xl font-headline font-semibold">Food vendors coming soon!</h2>
             <p className="text-muted-foreground mt-2">Check back later for delicious meals.</p>
+             <Link href="/search" className="text-primary mt-4 inline-block hover:underline">
+                Or search for restaurants
+             </Link>
         </div>
       </main>
     </div>

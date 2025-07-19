@@ -1,3 +1,4 @@
+
 'use client';
 import { use, useState, useEffect } from "react";
 import { notFound } from "next/navigation";
@@ -13,7 +14,6 @@ import {
     Bookmark,
     ShoppingCart,
     Plus,
-    LayoutGrid,
     Loader2
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -53,12 +53,11 @@ const ActionButton = ({ children, className }: { children: React.ReactNode, clas
     </Button>
 );
 
-const CategoryTab = ({ label, active, onClick, icon }: { label: string, active: boolean, onClick: () => void, icon?: React.ReactNode }) => (
+const CategoryTab = ({ label, active, onClick }: { label: string, active: boolean, onClick: () => void }) => (
     <button onClick={onClick} className={cn(
         "flex items-center gap-2 pb-2 text-muted-foreground font-semibold transition-colors whitespace-nowrap",
         active ? "text-primary border-b-2 border-primary" : "hover:text-primary/80"
     )}>
-        {icon && <div className={cn("p-2 rounded-full border-2", active ? "border-primary" : "border-muted-foreground")} >{icon}</div>}
         {label}
     </button>
 );
@@ -73,6 +72,7 @@ export default function VendorPage({ params }: { params: Promise<{ id: string }>
     if (!id) return;
 
     const fetchVendor = async () => {
+        setLoading(true);
         try {
             const docRef = doc(db, "vendors", id);
             const docSnap = await getDoc(docRef);
@@ -110,9 +110,14 @@ export default function VendorPage({ params }: { params: Promise<{ id: string }>
 
   const popularProducts = vendor.products?.filter(p => p.tags?.includes("popular")) || [];
   
-  const filteredProducts = activeTab !== "Popular"
-    ? vendor.products?.filter(p => p.category === activeTab)
-    : popularProducts;
+  const filteredProducts = activeTab === "Popular"
+    ? popularProducts
+    : vendor.products?.filter(p => p.category === activeTab);
+
+  // If "Popular" is the active tab, we want to show all other products below it.
+  const otherProducts = activeTab === 'Popular' 
+      ? vendor.products?.filter(p => !p.tags?.includes('popular'))
+      : filteredProducts;
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -204,9 +209,9 @@ export default function VendorPage({ params }: { params: Promise<{ id: string }>
         )}
 
         <section className="space-y-4">
-            <h2 className="text-2xl font-headline font-bold">{activeTab}</h2>
-            {filteredProducts.length > 0 ? (
-                filteredProducts.map(product => (
+            <h2 className="text-2xl font-headline font-bold">{activeTab === 'Popular' ? 'Menu' : activeTab}</h2>
+            {otherProducts.length > 0 ? (
+                otherProducts.map(product => (
                     <Card key={product.id} className="overflow-hidden shadow-sm">
                         <CardContent className="p-3 flex items-center justify-between gap-4">
                             <div className="flex items-center gap-4 flex-1">

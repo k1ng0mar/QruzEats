@@ -1,5 +1,6 @@
+
 'use client';
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -89,7 +90,8 @@ export default function SearchPage() {
             let q = query(vendorsCollection);
 
             if (activeCategory !== "All") {
-                q = query(vendorsCollection, where("tags", "array-contains", activeCategory));
+                const tagQuery = activeCategory === 'Restaurants' ? 'Food' : activeCategory;
+                q = query(vendorsCollection, where("tags", "array-contains", tagQuery));
             }
             
             const querySnapshot = await getDocs(q);
@@ -116,8 +118,8 @@ export default function SearchPage() {
                    <CategoryChip 
                         key={category}
                         label={category === 'Food' ? 'Restaurants' : category}
-                        active={activeCategory === category}
-                        onClick={() => setActiveCategory(category)}
+                        active={activeCategory === category || (activeCategory === 'Restaurants' && category === 'Food')}
+                        onClick={() => setActiveCategory(category === 'Food' ? 'Restaurants' : category)}
                     />
                 ))}
            </div>
